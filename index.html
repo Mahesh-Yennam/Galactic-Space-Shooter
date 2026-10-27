@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFQ8M0VSFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RFQ8M0VSFN');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galactic Space Shooter | Free Top-Down Sci-Fi Arcade Game - Gamility</title>
+  <meta name="description" content="Play Galactic Space Shooter for free! Fast-paced top-down sci-fi space shooter browser game. Blast asteroid fields, battle alien cruisers, unleash EMP bombs, and defeat motherships in your browser.">
+  <meta name="keywords" content="galactic space shooter, space arcade game, top down shooter, retro space game, free online arcade, gamility">
+  <meta name="author" content="Gamility">
+  <meta name="robots" content="index, follow">
+
+  <!-- Individual Game Favicon & PWA Manifest -->
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Galactic Space Shooter | Free Top-Down Sci-Fi Arcade Game - Gamility">
+  <meta property="og:description" content="Play Galactic Space Shooter for free! Fast-paced top-down sci-fi space shooter browser game. Blast asteroid fields, battle alien cruisers, unleash EMP bombs, and defeat motherships in your browser.">
+  <meta property="og:image" content="preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Galactic Space Shooter | Free Top-Down Sci-Fi Arcade Game - Gamility">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Galactic Space Shooter | Free Top-Down Sci-Fi Arcade Game - Gamility">
+  <meta name="twitter:description" content="Play Galactic Space Shooter for free! Fast-paced top-down sci-fi space shooter browser game. Blast asteroid fields, battle alien cruisers, unleash EMP bombs, and defeat motherships in your browser.">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#38bdf8">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Galactic Space Shooter",
+    "description": "Fast-paced top-down sci-fi space combat game. Blast alien fleets and asteroids, collect powerups, and defeat cosmic motherships.",
+    "genre": ["Action", "Arcade", "Space Combat"],
+    "playMode": "SinglePlayer",
+    "applicationCategory": "Game",
+    "operatingSystem": "Any modern web browser",
+    "inLanguage": "en"
+  }
+  </script>
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Game Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Gamility Ribbon for Standalone & Repos Navigation -->
+  <header class="top-nav-ribbon" role="banner">
+    <a href="https://mahesh-yennam.github.io/Gamility/" class="ribbon-brand" title="Gamility Home">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4L4 12V28L20 36L36 28V12L20 4Z" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 12L12 16V24L20 28L28 24V16L20 12Z" fill="#3b82f6" fill-opacity="0.85"/>
+        <circle cx="20" cy="20" r="3" fill="#ffffff"/>
+      </svg>
+      <span>Gamility Arcade</span>
+    </a>
+    <a href="https://mahesh-yennam.github.io/Gamility/games.html" class="ribbon-back-btn" title="Back to All Games">
+      <span>←</span> Back to Games
+    </a>
+  </header>
+
+  <!-- Main Game Stage -->
+  <main class="game-wrapper">
+    <!-- Header with Live Score HUD -->
+    <header class="arcade-header">
+      <div class="game-title-badge">
+        <h1>Galactic Space Shooter</h1>
+      </div>
+      <div class="hud-panel" aria-label="Game HUD">
+        <div class="hud-stat">
+          <span class="hud-label">Score</span>
+          <span id="scoreVal" class="hud-val">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">High Score</span>
+          <span id="highVal" class="hud-val">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Sector</span>
+          <span id="sectorVal" class="hud-val" style="color: #a855f7;">Sector 1</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Hull & Shields</span>
+          <span id="livesVal" class="hud-val hud-hull">🚀🚀🚀</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Canvas Stage Container -->
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="800" height="600" aria-label="Galactic Space Shooter 2D Canvas Stage"></canvas>
+
+      <!-- Start Mission Overlay -->
+      <div id="startOverlay" class="arcade-overlay">
+        <h2 class="overlay-title start">Galactic Defender</h2>
+        <p class="overlay-subtitle">Pilot your starfighter through hostile cosmic sectors. Annihilate enemy cruisers, dodge asteroid fields, collect EMP bombs, and survive alien boss flagships!</p>
+        <button id="startBtn" class="arcade-btn" type="button">
+          <span>🚀</span> Launch Mission
+        </button>
+      </div>
+
+      <!-- Mission Failed Overlay -->
+      <div id="gameOverOverlay" class="arcade-overlay hidden">
+        <h2 class="overlay-title gameover">Hull Destroyed</h2>
+        <p class="overlay-subtitle">Your Starship Was Annihilated! Final Score: <strong id="finalScore" style="color: var(--plasma-cyan); font-size: 1.5rem; display: inline-block; margin-left: 0.25rem;">0</strong></p>
+        <button id="restartBtn" class="arcade-btn" type="button">
+          <span>🔄</span> Re-Engage Sector
+        </button>
+      </div>
+    </div>
+
+    <!-- Controls & Actions Toolbar -->
+    <div class="controls-toolbar">
+      <div class="toolbar-btn-group">
+        <button id="pauseBtn" class="tool-icon-btn" type="button" title="Pause Game (P)">⏸️ Pause</button>
+        <button id="muteBtn" class="tool-icon-btn" type="button" title="Toggle Synthesized Audio">🔊 Sound</button>
+      </div>
+      <button id="fullscreenBtn" class="tool-icon-btn" type="button" title="Toggle Fullscreen">⛶ Fullscreen</button>
+    </div>
+
+    <!-- Mobile Touch Controls -->
+    <div class="mobile-touch-bar" aria-label="Mobile On-Screen D-Pad & Fire">
+      <div class="touch-dpad">
+        <div></div>
+        <button id="touchUp" class="touch-btn" type="button" aria-label="Move Ship Forward">▲</button>
+        <div></div>
+        <button id="touchLeft" class="touch-btn" type="button" aria-label="Move Ship Left">◀</button>
+        <button id="touchDown" class="touch-btn" type="button" aria-label="Move Ship Backward">▼</button>
+        <button id="touchRight" class="touch-btn" type="button" aria-label="Move Ship Right">▶</button>
+      </div>
+      <div class="touch-action-group">
+        <button id="touchFire" class="touch-btn touch-fire-btn" type="button" aria-label="Fire Weapons">🔥 BLASTER</button>
+      </div>
+    </div>
+
+    <!-- Instructions & Item Legend Card -->
+    <section class="game-instructions-card" aria-label="Flight Manual & Power-Up Legend">
+      <h3>🚀 Flight Manual & Power-Ups</h3>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-icon">⚡</span>
+          <div><strong>Triple Blaster:</strong> Upgrades ship cannons to a 3-way plasma spread for 8s.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-icon">🛡️</span>
+          <div><strong>Force Shield:</strong> Projects an energy bubble absorbing 1 collision or laser blast.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-icon">💣</span>
+          <div><strong>EMP Shockwave:</strong> Screen-clearing bomb that obliterates all standard targets.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-icon">🔧</span>
+          <div><strong>Hull Repair Core:</strong> Restores +1 starship hull integrity point.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-icon">🪨</span>
+          <div><strong>Asteroid Belts:</strong> Durable rocky obstacles that shatter when blasted (+30 Pts).</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-icon">👾</span>
+          <div><strong>Alien Mothership:</strong> Heavy boss flagship appearing periodically (+800 Pts).</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+        <strong>Desktop Controls:</strong> Use <strong>Arrow Keys</strong> or <strong>WASD</strong> to steer your ship. <strong>Spacebar</strong> to blast lasers. You can also simply hover and drag your <strong>Mouse</strong> across the canvas to glide smoothly! Press <strong>P</strong> to pause.<br>
+        <strong>Mobile Controls:</strong> Tap or hold the on-screen <strong>Directional D-Pad</strong> + <strong>FIRE</strong> button, or drag your finger directly across the screen.
+      </p>
+    </section>
+  </main>
+
+  <!-- Core Game Script -->
+  <script src="game.js"></script>
+</body>
+</html>
